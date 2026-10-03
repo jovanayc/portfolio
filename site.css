@@ -1,7 +1,14 @@
 /* Layout wrapper: the pages were designed at 1440px wide */
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #ffffff; -webkit-font-smoothing: antialiased; }
-.page { width: 100%; max-width: 1440px; margin: 0 auto; min-height: 100vh; }
+.page { width: 100%; min-height: 100vh; }
+
+/* Full-bleed sections: background color runs edge to edge at any width,
+   while the content stays in a centered 1248px column (the 1440px design minus 96px gutters). */
+.page > nav, .page > section, .page > header, .page > footer {
+  padding-left: max(96px, calc((100% - 1248px) / 2)) !important;
+  padding-right: max(96px, calc((100% - 1248px) / 2)) !important;
+}
 img { max-width: 100%; }
 
 /* Tablet */
