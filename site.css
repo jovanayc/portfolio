@@ -46,3 +46,15 @@ img { max-width: 100%; }
   .page [style*="justify-content: space-between"] { flex-wrap: wrap; gap: 16px; }
   .page [style*="min-height: 600px"] { min-height: 0 !important; }
 }
+
+/* About me: stacked laptop photo + logo row */
+@media (max-width: 760px) {
+  #me > div[style*="min-height: 860px"] { min-height: 560px !important; }
+  .logo-row { justify-content: center !important; gap: 24px 32px !important; }
+  .logo-row img { height: 28px !important; }
+  .logo-row img[alt="The Dev Difference"] { height: 56px !important; }
+}
+@media (max-width: 760px) {
+  .page a[href*="blerdle.com"] { flex-wrap: wrap; padding: 28px 24px !important; }
+  .page a[href*="blerdle.com"] span[style*="font-size: 40px"] { font-size: 28px !important; word-break: break-word; }
+}
