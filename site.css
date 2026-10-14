@@ -70,3 +70,5 @@ img { max-width: 100%; }
 h2[data-toc] { scroll-margin-top: 32px; }
 @media (max-width: 1290px) { .cs-toc { display: none; } }
 .cs-toc a.cs-toc-sub { padding: 4px 0 4px 40px; font-size: 13.5px; }
+.cs-toc a.cs-toc-sub { gap: 6px; }
+.cs-toc-mark { opacity: .6; }
