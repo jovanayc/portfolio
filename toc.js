@@ -43,7 +43,8 @@
       if (targets[i].getBoundingClientRect().top <= y) idx = i;
     }
     var r = article.getBoundingClientRect();
-    var show = first.getBoundingClientRect().top < window.innerHeight * 0.9 && r.bottom > nav.getBoundingClientRect().bottom + 40;
+    var nr = nav.getBoundingClientRect();
+    var show = r.top < nr.top - 24 && r.bottom > nr.bottom + 40;
     nav.classList.toggle('is-visible', show);
     if (idx === current) return;
     current = idx;
