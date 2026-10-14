@@ -23,7 +23,7 @@
       a.innerHTML = '<span class="cs-toc-num"></span><span>' + el.getAttribute('data-toc-plain') + '</span>';
     } else if (sub) {
       a.className = 'cs-toc-sub';
-      a.innerHTML = '<span>' + el.getAttribute('data-toc-sub') + '</span>';
+      a.innerHTML = '<span>&gt; ' + el.getAttribute('data-toc-sub') + '</span>';
     } else {
       n += 1;
       a.innerHTML = '<span class="cs-toc-num">' + n + '</span><span>' + el.getAttribute('data-toc') + '</span>';
