@@ -31,21 +31,23 @@
     nav.appendChild(a);
     return a;
   });
-  document.body.appendChild(nav);
-
   var first = targets[0];
   var article = first.closest('article') || document.body;
+  // The outline sits in a rail beside the article: it starts level with the top of the
+  // article content, then sticks once you scroll past it, and stops at the article's end.
+  if (getComputedStyle(article).position === 'static') article.style.position = 'relative';
+  var rail = document.createElement('div');
+  rail.className = 'cs-toc-rail';
+  rail.style.top = getComputedStyle(article).paddingTop;
+  rail.appendChild(nav);
+  article.appendChild(rail);
   var current = -1;
   function update() {
     var y = window.innerHeight * 0.3;
-    var idx = -1;
+    var idx = 0;
     for (var i = 0; i < targets.length; i++) {
       if (targets[i].getBoundingClientRect().top <= y) idx = i;
     }
-    var r = article.getBoundingClientRect();
-    var nr = nav.getBoundingClientRect();
-    var show = r.top < nr.top - 24 && r.bottom > nr.bottom + 40;
-    nav.classList.toggle('is-visible', show);
     if (idx === current) return;
     current = idx;
     links.forEach(function (a, i) {
