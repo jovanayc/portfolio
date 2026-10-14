@@ -58,3 +58,14 @@ img { max-width: 100%; }
   .page a[href*="blerdle.com"] { flex-wrap: wrap; padding: 28px 24px !important; }
   .page a[href*="blerdle.com"] span[style*="font-size: 40px"] { font-size: 28px !important; word-break: break-word; }
 }
+
+/* Case study outline (toc.js): quiet sticky list to the left of the 760px article column */
+.cs-toc { position: fixed; top: 50%; transform: translateY(-50%); left: calc(50% - 380px - 250px); width: 200px; display: flex; flex-direction: column; gap: 2px; font-family: 'DM Sans', sans-serif; opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; z-index: 5; }
+.cs-toc.is-visible { opacity: 1; visibility: visible; }
+.cs-toc-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #86616C; margin: 0 0 10px 14px; }
+.cs-toc a { display: flex; gap: 10px; padding: 6px 0 6px 12px; border-left: 2px solid #E6DDCB; font-size: 14.5px; line-height: 1.35; color: #6B7A8C; text-decoration: none; }
+.cs-toc a:hover { color: #2E5A81; }
+.cs-toc a.is-active { color: #2E5A81; font-weight: 700; border-left-color: #2E5A81; }
+.cs-toc-num { flex: none; width: 18px; color: inherit; opacity: .7; }
+h2[data-toc] { scroll-margin-top: 32px; }
+@media (max-width: 1290px) { .cs-toc { display: none; } }
