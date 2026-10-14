@@ -1,8 +1,9 @@
-// Case study outline: builds a quiet left-side section list from every <h2 data-toc="...">,
-// highlights the section being read, and scrolls to a section on click.
+// Case study outline: builds a quiet left-side section list from every <h2 data-toc="...">
+// (plus optional sub-items marked data-toc-sub="..."), highlights the part being read,
+// and scrolls to it on click.
 (function () {
-  var heads = Array.prototype.slice.call(document.querySelectorAll('h2[data-toc]'));
-  if (!heads.length) return;
+  var targets = Array.prototype.slice.call(document.querySelectorAll('h2[data-toc], [data-toc-sub]'));
+  if (!targets.length) return;
 
   var nav = document.createElement('nav');
   nav.className = 'cs-toc';
@@ -12,26 +13,35 @@
   label.textContent = 'On this page';
   nav.appendChild(label);
 
-  var links = heads.map(function (h, i) {
-    if (!h.id) h.id = 'section-' + (i + 1);
+  var n = 0;
+  var links = targets.map(function (el, i) {
+    if (!el.id) el.id = 'section-' + (i + 1);
+    var sub = el.hasAttribute('data-toc-sub');
     var a = document.createElement('a');
-    a.href = '#' + h.id;
-    a.innerHTML = '<span class="cs-toc-num">' + (i + 1) + '</span><span>' + h.getAttribute('data-toc') + '</span>';
+    a.href = '#' + el.id;
+    if (sub) {
+      a.className = 'cs-toc-sub';
+      a.innerHTML = '<span>' + el.getAttribute('data-toc-sub') + '</span>';
+    } else {
+      n += 1;
+      a.innerHTML = '<span class="cs-toc-num">' + n + '</span><span>' + el.getAttribute('data-toc') + '</span>';
+    }
     nav.appendChild(a);
     return a;
   });
   document.body.appendChild(nav);
 
-  var article = heads[0].closest('article') || document.body;
+  var first = targets[0];
+  var article = first.closest('article') || document.body;
   var current = -1;
   function update() {
     var y = window.innerHeight * 0.3;
     var idx = -1;
-    for (var i = 0; i < heads.length; i++) {
-      if (heads[i].getBoundingClientRect().top <= y) idx = i;
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i].getBoundingClientRect().top <= y) idx = i;
     }
     var r = article.getBoundingClientRect();
-    var show = heads[0].getBoundingClientRect().top < window.innerHeight * 0.9 && r.bottom > nav.getBoundingClientRect().bottom + 40;
+    var show = first.getBoundingClientRect().top < window.innerHeight * 0.9 && r.bottom > nav.getBoundingClientRect().bottom + 40;
     nav.classList.toggle('is-visible', show);
     if (idx === current) return;
     current = idx;
