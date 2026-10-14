@@ -2,7 +2,7 @@
 // (plus optional sub-items marked data-toc-sub="..."), highlights the part being read,
 // and scrolls to it on click.
 (function () {
-  var targets = Array.prototype.slice.call(document.querySelectorAll('h2[data-toc], [data-toc-sub]'));
+  var targets = Array.prototype.slice.call(document.querySelectorAll('[data-toc-plain], h2[data-toc], [data-toc-sub]'));
   if (!targets.length) return;
 
   var nav = document.createElement('nav');
@@ -19,7 +19,9 @@
     var sub = el.hasAttribute('data-toc-sub');
     var a = document.createElement('a');
     a.href = '#' + el.id;
-    if (sub) {
+    if (el.hasAttribute('data-toc-plain')) {
+      a.innerHTML = '<span class="cs-toc-num"></span><span>' + el.getAttribute('data-toc-plain') + '</span>';
+    } else if (sub) {
       a.className = 'cs-toc-sub';
       a.innerHTML = '<span>' + el.getAttribute('data-toc-sub') + '</span>';
     } else {
