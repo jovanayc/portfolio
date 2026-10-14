@@ -72,3 +72,4 @@ h2[data-toc] { scroll-margin-top: 32px; }
 .cs-toc a.cs-toc-sub { padding: 4px 0 4px 40px; font-size: 13.5px; }
 .cs-toc a.cs-toc-sub { gap: 6px; }
 .cs-toc-mark { opacity: .6; }
+@media (max-width: 800px) { .page article a[aria-label*="Loom"], .page article a[aria-label*="Loom"] > span { width: 100% !important; height: auto !important; left: 0 !important; } }
