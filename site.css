@@ -98,3 +98,51 @@ h2[data-toc] { scroll-margin-top: 32px; }
 @keyframes jc-hl{to{background-size:100% 100%}}
 .jc-hl{background-repeat:no-repeat;background-size:0% 100%;animation:jc-hl .7s ease-out 1.25s forwards}
 @media (prefers-reduced-motion:reduce){.jc-hl{animation:none;background-size:100% 100%}}
+/* ---- Footer CTA cursors ---- */
+@keyframes jc-bob{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-10px)}}
+.jc-cta{position:relative}
+.jc-tag{position:absolute;z-index:1;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.jc-tag-in{position:relative;display:inline-flex;animation:jc-bob 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+.jc-tag-pill{display:inline-block;padding:12px 22px;border-radius:999px;border:2px solid rgba(253,246,220,.85);font-family:'DM Sans',sans-serif;font-size:19px;font-weight:500;white-space:nowrap;box-shadow:0 14px 30px rgba(10,25,45,.35)}
+.jc-tag-cursor{position:absolute;left:-18px;top:-20px;width:28px;height:28px}
+.jc-cta:hover .jc-tag-a{transform:translate(36px,22px)}
+.jc-cta:hover .jc-tag-b{transform:translate(-36px,22px)}
+.jc-cta:hover .jc-tag-c{transform:translate(-44px,6px)}
+@media (max-width:900px){.jc-tag{position:static!important;transform:none!important}.jc-cta-tags{position:static!important;display:flex;flex-wrap:wrap;justify-content:center;gap:28px 20px;padding:12px 0 8px}.jc-tag-in{animation:none}.jc-tag-pill{font-size:16px;padding:10px 18px}}
+@media (prefers-reduced-motion:reduce){.jc-tag-in{animation:none}.jc-tag{transition:none}}
+/* ---- Scroll reveal (added by reveal.js) ---- */
+.jc-reveal{opacity:0;transform:translateY(56px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
+.jc-reveal.is-in{opacity:1;transform:none}
+/* ---- Community cards grow on hover ---- */
+.jc-grow{transition:transform .35s ease}
+.jc-grow img{transition:box-shadow .35s ease}
+.page .jc-grow:hover{transform:translateY(-6px) scale(1.04)}
+.page .jc-grow:hover img{box-shadow:0 18px 36px rgba(20,40,60,.28)}
+.page .jc-grow:hover ~ .jc-grow{transform:translateX(12px)}
+.page .jc-grow:has(~ .jc-grow:hover){transform:translateX(-12px)}
+@media (prefers-reduced-motion:reduce){.jc-grow{transition:none}}
+.jc-pill-lift{transition:transform .35s ease,box-shadow .35s ease;box-shadow:0 8px 20px rgba(20,40,60,.12)}
+.jc-pill-lift:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(20,40,60,.22)}
+.jc-pill-lift > span{transition:transform .35s ease}
+.jc-pill-lift:hover > span{transform:translateX(4px)}
+/* ---- Hero background motion ---- */
+.jc-hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.jc-blob{position:absolute;border-radius:50%;opacity:.9;animation:jc-drift 24s ease-in-out infinite alternate}
+@keyframes jc-drift{to{transform:translate(90px,-70px) scale(1.18)}}
+.jc-orbit{position:absolute;right:-90px;top:110px;width:780px;height:780px}
+.jc-orbit g{transform-origin:380px 380px;transform-box:view-box}
+.jc-spin{animation:jc-spin 60s linear infinite}
+.jc-spin-rev{animation:jc-spin 42s linear infinite reverse}
+.jc-spin-line{animation:jc-spin 120s linear infinite}
+@keyframes jc-spin{to{transform:rotate(360deg)}}
+.jc-hero-fg{position:relative;z-index:1}
+@media (max-width:760px){.jc-orbit{right:-260px;top:auto;bottom:40px;opacity:.6}}
+/* ---- About me timeline ---- */
+.jc-timeline{position:relative;padding-left:46px}
+.jc-timeline::before{content:"";position:absolute;left:11px;top:24px;bottom:0;width:1.5px;border-radius:2px;background:#EDE6D8}
+.jc-tl-fill{position:absolute;left:11px;top:24px;width:1.5px;border-radius:2px;background:#C8403F;height:calc(100% - 24px);transition:height .12s linear}
+.jc-tl-row{position:relative}
+.jc-tl-row::before{content:"";position:absolute;left:-41.5px;top:21px;width:7px;height:7px;border-radius:50%;background:#ffffff;border:2px solid #C8403F;transition:border-color .3s ease,transform .3s ease}
+.jc-tl-js .jc-tl-row:not(.is-on)::before{border-color:#D9CFBF}
+.jc-tl-js .jc-tl-row.is-on::before{background:#C8403F;transform:scale(1.15)}
+@media (prefers-reduced-motion:reduce){.jc-blob,.jc-spin,.jc-spin-rev,.jc-spin-line{animation:none}}
