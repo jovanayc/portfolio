@@ -129,14 +129,7 @@ h2[data-toc] { scroll-margin-top: 32px; }
 .jc-hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .jc-blob{position:absolute;border-radius:50%;opacity:.9;animation:jc-drift 24s ease-in-out infinite alternate}
 @keyframes jc-drift{to{transform:translate(90px,-70px) scale(1.18)}}
-.jc-orbit{position:absolute;right:-90px;top:110px;width:780px;height:780px}
-.jc-orbit g{transform-origin:380px 380px;transform-box:view-box}
-.jc-spin{animation:jc-spin 60s linear infinite}
-.jc-spin-rev{animation:jc-spin 42s linear infinite reverse}
-.jc-spin-line{animation:jc-spin 120s linear infinite}
-@keyframes jc-spin{to{transform:rotate(360deg)}}
 .jc-hero-fg{position:relative;z-index:1}
-@media (max-width:760px){.jc-orbit{right:-260px;top:auto;bottom:40px;opacity:.6}}
 /* ---- About me timeline ---- */
 .jc-timeline{position:relative;padding-left:46px}
 .jc-timeline::before{content:"";position:absolute;left:11px;top:24px;bottom:0;width:1.5px;border-radius:2px;background:#EDE6D8}
@@ -145,4 +138,4 @@ h2[data-toc] { scroll-margin-top: 32px; }
 .jc-tl-row::before{content:"";position:absolute;left:-41.5px;top:21px;width:7px;height:7px;border-radius:50%;background:#ffffff;border:2px solid #C8403F;transition:border-color .3s ease,transform .3s ease}
 .jc-tl-js .jc-tl-row:not(.is-on)::before{border-color:#D9CFBF}
 .jc-tl-js .jc-tl-row.is-on::before{background:#C8403F;transform:scale(1.15)}
-@media (prefers-reduced-motion:reduce){.jc-blob,.jc-spin,.jc-spin-rev,.jc-spin-line{animation:none}}
+@media (prefers-reduced-motion:reduce){.jc-blob{animation:none}}
